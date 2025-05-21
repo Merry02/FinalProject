@@ -34,20 +34,26 @@ Movie production studios want to predict the success (IMDB rating) of their film
 ## Data Understanding
 """
 
+
+
+import streamlit as st
 import pandas as pd
-from google.colab import files
+
+st.title("Movie Dataset Analyzer")
+
+uploaded_file = st.file_uploader("Upload your movie_metadata.csv", type="csv")
+
+if uploaded_file is not None:
+    df = pd.read_csv(uploaded_file)
+    st.write("Preview of the data:")
+    st.write(df.head())
 
 
-uploaded = files.upload()
 
 
-filename = list(uploaded.keys())[0]
 
 
-df = pd.read_csv(filename)
 
-
-df.head()
 
 """### EDA Questions:
 1. How many movies are in the dataset?
